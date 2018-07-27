@@ -11,7 +11,7 @@ const loaders = [{
 
 export default {
   devtool: 'source-map',
-  entry: './src/index',
+  entry: ['babel-polyfill','./src/index'],
   output: {
     path: join(__dirname, 'umd'),
     library: 'MobxReactForm',
