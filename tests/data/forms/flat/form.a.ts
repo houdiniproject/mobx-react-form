@@ -1,6 +1,6 @@
 import ajv = require('ajv');
-import validator from 'validator';
-import validatorjs from 'validatorjs';
+import validator =  require('validator');
+import validatorjs = require('validatorjs');
 
 import { Form } from '../../../../src';
 import svkExtend from '../../extension/svk';

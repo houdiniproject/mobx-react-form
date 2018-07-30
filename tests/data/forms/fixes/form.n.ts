@@ -1,4 +1,4 @@
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 // const fields = [{

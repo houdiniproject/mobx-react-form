@@ -11,19 +11,19 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.$('array').add(); // 0
-        this.$('array').add(); // 1
-        this.$('array').add(); // 2
+      onInit(form:any) {
+        form.$('array').add(); // 0
+        form.$('array').add(); // 1
+        form.$('array').add(); // 2
 
-        this.$('array').del(0);
+        form.$('array').del(0);
 
         const proxy = new Proxy({
           preventDefault: () => {},
         }, {});
 
-        this.$('array').onDel(proxy, 1);
-        this.$('array[2]').onDel(proxy);
+        form.$('array').onDel(proxy, 1);
+        form.$('array[2]').onDel(proxy);
       },
     };
   }

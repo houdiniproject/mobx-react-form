@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as utils from '../utils';
 import Options from '../Options';
+import { ValidatorDriver } from './ValidatorDriver';
 
 /**
   Schema Validation Keywords
@@ -13,7 +14,7 @@ import Options from '../Options';
     };
 
 */
-export default class SVK {
+export default class SVK implements ValidatorDriver {
 
   validate = null;
 

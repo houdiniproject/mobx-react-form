@@ -8,15 +8,15 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.$('array').add({ name: 'item_to_delete' });
-        this.del('array.item_to_delete');
+      onInit(form:any) {
+        form.$('array').add({ name: 'item_to_delete' });
+        form.del('array.item_to_delete');
 
-        this.$('array').add({ name: 'item_to_delete2' });
-        this.$('array').del('item_to_delete2');
+        form.$('array').add({ name: 'item_to_delete2' });
+        form.$('array').del('item_to_delete2');
 
-        this.add({ name: 'item_to_delete_3' });
-        this.del('item_to_delete_3');
+        form.add({ name: 'item_to_delete_3' });
+        form.del('item_to_delete_3');
       },
     };
   }

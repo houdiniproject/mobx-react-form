@@ -6,6 +6,8 @@ import { $try } from './utils';
 import vjf from './validators/VJF'; // Vanilla JavaScript Functions
 import svk from './validators/SVK'; // Json Schema Validation Keywords
 import dvr from './validators/DVR'; // Declarative Validation Rules
+import { setFlagsFromString } from 'v8';
+
 
 export default class Validator {
  
@@ -37,13 +39,14 @@ export default class Validator {
     this.checkSVKValidationPlugin();
   }
 
-  initDrivers(drivers) { // eslint-disable-next-line
+  
+  initDrivers(drivers:any) { // eslint-disable-next-line
 
     let self = this
     _.map(drivers, (Class, key) => 
     {
-      if (self.plugins[key] === true){
-        self.drivers[key] = new Class(self.drivers[key], {
+      if (self.plugins[key]){
+        self.drivers[key] = new Class(self.plugins[key], {
         schema: (key === 'svk') ? this.schema : null,
         options: self.form.state.options,
         promises: self.promises,

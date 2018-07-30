@@ -1,4 +1,4 @@
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 const fields = [
@@ -43,23 +43,23 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.$('jobs').add({
+      onInit(form:any) {
+        form.$('jobs').add({
           jobId: 1,
           companyName: 'x',
         });
 
-        this.$('number').set(0);
+        form.$('number').set(0);
 
-        this.$('people').set([
+        form.$('people').set([
           { name: null },
         ]);
 
-        this.$('items').set('value', [
+        form.$('items').set('value', [
           { name: 0 },
         ]);
 
-        this.update({
+        form.update({
           array: [
             { name: null },
             { name: null },

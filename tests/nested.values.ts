@@ -102,7 +102,7 @@ describe('Check Nested $N Values', () => {
 
 describe('Check Nested $O value computed check', () => {
   it('$O members[1].hobbies value should be array', () =>
-    expect($.$O.$('members[1].hobbies').value).to.be.array);
+    expect($.$O.$('members[1].hobbies').value).to.be.an('array'));
 
   it('$O members[1].hobbies value should be length of 2', () =>
     expect($.$O.$('members[1].hobbies').value).to.have.lengthOf(2));

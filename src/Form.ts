@@ -10,17 +10,26 @@ import Field from './Field';
 
 
 export abstract class OuterForm extends Base{
-  plugins?:() => any
-  setup?:() => any
-  options?:() => any
-  bindings?:() => any
+  plugins?() : any
+  setup?(): any
+  options?(): any
+  bindings?():  any
+}
+
+interface FormOptions{
+  name?:string
+    options?:any
+    plugins?:any,
+    bindings?:any,
+    hooks?:any
+    handlers?:any
 }
 
 export default class Form extends OuterForm {
 
-  name;
-  state;
-  validator;
+  name:string;
+  state:any;
+  validator:Validator;
 
   debouncedValidation:any
 
@@ -38,52 +47,51 @@ export default class Form extends OuterForm {
   $touched:boolean
   $changed:boolean
 
-  
 
-  constructor(setup:any = {}, {
 
-    name = null,
-    options = {},
-    plugins = {},
-    bindings = {},
-    hooks = {},
-    handlers = {},
 
-  } = {}) {
+  constructor(setup:any = {}, formOptions:FormOptions = {}) {
     super();
 
-    this.name = name;
-    this.$hooks = hooks;
-    this.$handlers = handlers;
+    this.name = formOptions.name;
+    this.$hooks = formOptions.hooks || {};
+    this.$handlers = formOptions.handlers || {};
+
+
+    const initial = _.each({setup: setup, options: formOptions.options || {}, plugins: formOptions.plugins || {}, bindings: formOptions.bindings || {}
+    },
+    (val, key) => _.isFunction(this[key])
+      ? _.merge(val, this[key].apply(this, [this]))
+      : val);
 
     // load data from initializers methods
-    let initial:any = {
+    // let initial:any = {
       
-      plugins: plugins,
-      setup:setup,
-      options: options,
-      binding: bindings
+    //   plugins: formOptions.plugins || {},
+    //   setup:setup,
+    //   options: formOptions.options || {},
+    //   binding: formOptions.bindings || {}
 
-    }
-    if (this.plugins && _.isFunction(this.plugins))
-    {
-     initial.plugins = _.merge(plugins, this.plugins() )
-    }
+    // }
+    // if (this.plugins && _.isFunction(this.plugins))
+    // {
+    //  initial.plugins = _.merge(initial.plugins, this.plugins() )
+    // }
 
-    if (this.setup && _.isFunction(this.setup))
-    {
-     initial.setup = _.merge(setup, this.setup() )
-    }
+    // if (this.setup && _.isFunction(this.setup))
+    // {
+    //  initial.setup = _.merge(initial.setup, this.setup() )
+    // }
 
-    if (this.options && _.isFunction(this.options))
-    {
-     initial.options = _.merge(options, this.options() )
-    }
+    // if (this.options && _.isFunction(this.options))
+    // {
+    //  initial.options = _.merge(initial.options, this.options() )
+    // }
 
-    if (this.bindings && _.isFunction(this.bindings))
-    {
-     initial.bindings = _.merge(bindings, this.bindings() )
-    }
+    // if (this.bindings && _.isFunction(this.bindings))
+    // {
+    //  initial.bindings = _.merge(initial.bindings, this.bindings() )
+    // }
 
 
     this.state = new State({
@@ -188,7 +196,7 @@ export default class Form extends OuterForm {
 */
 
 
-  makeField(data) {
+  makeField(data:any) {
     return new Field(data);
   }
 
@@ -212,14 +220,14 @@ export default class Form extends OuterForm {
   }
 
   @action
-  invalidate(message = null) {
+  invalidate(message:string = null) {
     this.validator.error = message
       || this.state.options.get('defaultGenericError')
       || true;
   }
 
-  showErrors(show = true) {
-    this.each(field => field.showErrors(show));
+  showErrors(show:boolean = true) {
+    this.each((field:any) => field.showErrors(show));
   }
 
   /**
@@ -228,7 +236,7 @@ export default class Form extends OuterForm {
   @action clear() {
     this.$touched = false;
     this.$changed = false;
-    this.each(field => field.clear(true));
+    this.each((field:any) => field.clear(true));
   }
 
   /**
@@ -237,7 +245,7 @@ export default class Form extends OuterForm {
   @action reset() {
     this.$touched = false;
     this.$changed = false;
-    this.each(field => field.reset(true));
+    this.each((field:any) => field.reset(true));
   }
 
 };

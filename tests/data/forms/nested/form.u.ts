@@ -43,7 +43,7 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
+      onInit(form) {
         // this.$('user.email')
         //   .on('update', ({ path, event, change }) => {
         //     describe('Check Nested-U $("user.email").on("update") hook', () => {
@@ -54,7 +54,7 @@ class NewForm extends Form {
         //     });
         //   });
 
-        this.observe({
+        form.observe({
           path: 'user.email',
           key: 'value',
           call: ({ change }) => describe('Check Nested-U observer', () =>
@@ -62,7 +62,7 @@ class NewForm extends Form {
               expect(change.newValue).to.be.equal('notAnEmail'))),
         });
 
-        this.update({ user: { email: 'notAnEmail' } });
+        form.update({ user: { email: 'notAnEmail' } });
       },
     };
   }

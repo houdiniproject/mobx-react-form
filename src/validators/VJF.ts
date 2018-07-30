@@ -1,15 +1,16 @@
 import * as _ from 'lodash';
 import { toJS } from 'mobx';
 import * as utils from '../utils';
+import { ValidatorDriver } from './ValidatorDriver';
 
 /**
   Vanilla JavaScript Functions
 */
-export default class VJF {
+export default class VJF implements ValidatorDriver {
 
   
 
-  options;
+  options:any;
   promises:any[]
 
   validator=null

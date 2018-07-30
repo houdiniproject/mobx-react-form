@@ -5,6 +5,8 @@
     "sourceMap": true,
     "skipLibCheck": false,
     "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
     "baseUrl": "./",
     "lib": ["dom","es5", "scripthost", "es2015" ],
     "paths": { "*": [ "./types/*"] },

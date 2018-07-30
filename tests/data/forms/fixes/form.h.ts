@@ -39,13 +39,13 @@ class NewForm extends Form {
         });
 
 
-        this.$('singleFieldArray').set(['x']);
-        this.$('singleFieldEmptyArray').set([]);
-        this.$('singleFieldEmptyObject').set({});
+        form.$('singleFieldArray').set(['x']);
+        form.$('singleFieldEmptyArray').set([]);
+        form.$('singleFieldEmptyObject').set({});
 
-        this.$('items').$(0).$('name').set('validators', [shouldBeEqualTo('items[0].alternateName')]);
-        this.$('items').$(0).$('name').set('related', ['items[0].alternateName']);
-        this.$('items').$(0).$('name').set('extra', ['a', 'b', 'c']);
+        form.$('items').$(0).$('name').set('validators', [shouldBeEqualTo('items[0].alternateName')]);
+        form.$('items').$(0).$('name').set('related', ['items[0].alternateName']);
+        form.$('items').$(0).$('name').set('extra', ['a', 'b', 'c']);
       },
     };
   }

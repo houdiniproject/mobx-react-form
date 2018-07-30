@@ -22,8 +22,8 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.$('tags').add([{
+      onInit(form:any) {
+        form.$('tags').add([{
           id: 'x',
           name: 'y',
         }]);

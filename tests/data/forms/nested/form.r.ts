@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 const plugins = { dvr: validatorjs };

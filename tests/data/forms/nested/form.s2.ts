@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 const fields = [
@@ -100,7 +100,7 @@ class NewForm extends Form {
   hooks() {
     return {
       onInit(form) {
-        this.$('club.name').intercept((data) => {
+        form.$('club.name').intercept((data) => {
           // eslint-disable-next-line
           data.change.newValue = data.change.newValue + '-intercepted';
           return data.change;
@@ -132,7 +132,7 @@ class NewForm extends Form {
           }],
         });
 
-        this.dispose(); // dispose all (observer & interceptor) recursively
+        form.dispose(); // dispose all (observer & interceptor) recursively
 
         describe('Check Nested-S2 Disposers:', () => {
           it('Disposers should not have $value@club.name prop', () =>

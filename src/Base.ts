@@ -10,7 +10,6 @@ import Events from './shared/Events';
 import Helpers from './shared/Helpers'
 import Initializers from './shared/Initializer';
 import Utils from './shared/Utils';
-import Field from './Field';
 
 export default abstract class Base implements Actions, Events, Helpers, Initializers, Utils {
   abstract invalidate(message?: any, async?: boolean):any

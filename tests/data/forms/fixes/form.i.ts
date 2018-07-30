@@ -1,4 +1,4 @@
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 const fields = [
@@ -41,10 +41,11 @@ const initials = {
 
 class NewForm extends Form {
 
-  plugins =
-     {
+  plugins () {
+    return {
       dvr: validatorjs,
-    };
+    }
+  };
   
 
   hooks() {

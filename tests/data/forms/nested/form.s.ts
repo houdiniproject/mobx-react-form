@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 
 const fields = [
@@ -84,12 +84,12 @@ const values = {
 
 class NewForm extends Form {
 
-  plugins) {
+  plugins() {
       return {
         dvr: validatorjs,
       };
     }
-  }
+  
   setup() {
     // omit "rules" (use constructor)
     return {
@@ -100,7 +100,7 @@ class NewForm extends Form {
   hooks() {
     return {
       onInit(form) {
-        this.$('club.name').intercept((data) => {
+        form.$('club.name').intercept((data) => {
           // eslint-disable-next-line
           data.change.newValue = data.change.newValue + '-intercepted';
           return data.change;
@@ -134,14 +134,14 @@ class NewForm extends Form {
         });
 
         // dispose all hobbies 'value' observers recursively
-        this.$('members')
+        form.$('members')
           .map(members => members.$('hobbies')
             .map(hobbies => hobbies.dispose({
               type: 'observer',
               key: 'value',
             })));
 
-        this.$('club.name').dispose({
+        form.$('club.name').dispose({
           type: 'interceptor',
         });
 

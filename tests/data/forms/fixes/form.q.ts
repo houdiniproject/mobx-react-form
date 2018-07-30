@@ -19,13 +19,13 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
+      onInit(form:any) {
         // FIX: #282 (reserved keywords)
-        this.$('incident').add();
+        form.$('incident').add();
 
         // FIX #324
-        this.update({ arrayFieldA: [{ id: 1, name: 'name' }] });
-        this.update({ arrayFieldB: [{ id: 1, name: 'name', value: 'some val' }] });
+        form.update({ arrayFieldA: [{ id: 1, name: 'name' }] });
+        form.update({ arrayFieldB: [{ id: 1, name: 'name', value: 'some val' }] });
       },
     };
   }

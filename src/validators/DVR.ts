@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { ValidatorDriver } from './ValidatorDriver';
 
 /**
   Declarative Validation Rules
@@ -11,7 +12,7 @@ import * as _ from 'lodash';
     };
 
 */
-export default class DVR {
+export default class DVR implements ValidatorDriver {
 
   promises = [];
 
@@ -38,8 +39,6 @@ export default class DVR {
   }
 
   extendValidator() {
-    console.error("extended validator")
-    console.error(this.validator)
     // extend the validator with custom "registerAsyncRule" method
     _.extend(this.validator, {
       registerAsyncRule: (key, callback) => this.registerAsyncRule(key, callback),

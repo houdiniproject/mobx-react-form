@@ -44,8 +44,8 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.invalidate('The user already exist');
+      onInit(form:any) {
+        form.invalidate('The user already exist');
       },
     };
   }

@@ -1,4 +1,4 @@
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { expect } from 'chai';
 import { Form } from '../../../../src';
 
@@ -16,11 +16,12 @@ const rules = {
 
 class NewForm extends Form {
 
-  plugins =
-    {
+  plugins() {
+    return {
       dvr: validatorjs,
-    };
-  
+    }
+  };
+
 
   options() {
     return {
@@ -30,25 +31,25 @@ class NewForm extends Form {
 
   hooks() {
     return {
-      onInit() {
-        this.$('email').set('type', 'email'); // #415
-        this.$('email').set('value', 'notAnEmail');
+      onInit(form:any) {
+        form.$('email').set('type', 'email'); // #415
+        form.$('email').set('value', 'notAnEmail');
 
         describe('Form $L onInit() checks', () => {
           it('$L state.options "validateOnChange" should be false', () =>
-            expect(this.state.options.get('validateOnChange')).to.be.false);
+            expect(form.state.options.get('validateOnChange')).to.be.false);
 
           it('$L email value should be equal to "notAnEmail"', () =>
-            expect(this.$('email').value).to.be.equal('notAnEmail'));
+            expect(form.$('email').value).to.be.equal('notAnEmail'));
 
           it('$L email hasError should be false', () =>
-            expect(this.$('email').hasError).to.be.false);
+            expect(form.$('email').hasError).to.be.false);
 
           it('$L form hasError should be false', () =>
-            expect(this.hasError).to.be.false);
+            expect(form.hasError).to.be.false);
 
           it('$L form isValid should be true', () =>
-            expect(this.isValid).to.be.true);
+            expect(form.isValid).to.be.true);
         });
       },
     };

@@ -1,4 +1,4 @@
-import validatorjs from 'validatorjs';
+import validatorjs = require('validatorjs');
 import { Form } from '../../../../src';
 import dvrExtend from '../../extension/dvr';
 import { shouldBeEqualTo } from '../../extension/vjf';
@@ -33,7 +33,7 @@ const disabled = {
 
 class NewForm extends Form {
 
-  plugin()  {
+  plugins()  {
     return {
    
       dvr: {
