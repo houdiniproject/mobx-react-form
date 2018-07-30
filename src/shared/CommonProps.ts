@@ -7,7 +7,7 @@ export interface CommonProperties{
 
     readonly hasNestedFields: boolean
     
-    container: (path:string) => any
+    container: (path?:string) => any
     select: (path: any, fields?: any, isStrict?: boolean)=> any
     execHook:(hook:string, o:any) => any
 

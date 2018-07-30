@@ -8,7 +8,7 @@ declare class SharedEvents implements CommonProperties {
     fields: any;
     $submitting: boolean;
     hasNestedFields: boolean;
-    container: (path: string) => any;
+    container: (path?: string) => any;
     select: (path: any, fields?: any, isStrict?: boolean) => any;
     execHook: (hook: string, o: any) => any;
     invalidate: (message?: any, async?: boolean) => any;

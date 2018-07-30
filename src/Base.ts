@@ -64,7 +64,7 @@ export default abstract class Base implements Actions, Events, Helpers, Initiali
 
   /** Utils */
   select: (path: any, fields?: any, isStrict?: boolean)=> any
-  container: ($path: any) => any
+  container: ($path?: any) => any
   has: (path: any) => boolean
   map:(cb: any) =>any
   each: (iteratee: any, fields?: any, depth?: number) => void

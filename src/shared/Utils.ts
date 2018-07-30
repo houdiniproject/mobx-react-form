@@ -54,7 +54,7 @@ class SharedUtils implements CommonProperties{
   /**
     Get Container
    */
-  container($path) {
+  container($path?) {
     const path = parser.parsePath(utils.$try($path, this.path));
     const cpath = _.trim(path.replace(new RegExp('[^./]+$'), ''), '.');
 

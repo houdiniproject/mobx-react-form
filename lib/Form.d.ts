@@ -47,7 +47,7 @@ export default class Form extends OuterForm {
     /**
       Prototypes
     */
-    makeField(data: any): Field;
+    makeField<TField extends Field = Field>(data: any): Field;
     /**
      Init Form Fields and Nested Fields
      */

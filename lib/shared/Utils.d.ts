@@ -21,7 +21,7 @@ declare class SharedUtils implements CommonProperties {
     /**
       Get Container
      */
-    container($path: any): any;
+    container($path?: any): any;
     /**
       Has Field
      */

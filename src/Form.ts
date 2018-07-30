@@ -196,7 +196,7 @@ export default class Form extends OuterForm {
 */
 
 
-  makeField(data:any) {
+  makeField<TField extends Field=Field>(data:any) {
     return new Field(data);
   }
 
