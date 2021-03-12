@@ -103,5 +103,6 @@
     "validator": "^8.0.0",
     "validatorjs": "^3.13.3",
     "webpack": "3"
-  }
+  },
+   "resolutions": { "upath": "1.1.0" }
 }
